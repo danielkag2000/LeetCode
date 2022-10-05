@@ -18,13 +18,13 @@ class Solution(object):
         
         if k == 0:
             return head
-        else:
-            new_last = head
-            for i in range(list_len - k - 1):
-                new_last = new_last.next
-            new_first = new_last.next
         
+        new_last = head
+        for i in range(list_len - k - 1):
+            new_last = new_last.next
+            
         last.next = head
+        new_first = new_last.next
         new_last.next = None
         
         return new_first
