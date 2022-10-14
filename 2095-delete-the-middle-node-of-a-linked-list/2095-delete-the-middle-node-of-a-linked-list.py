@@ -9,22 +9,22 @@ class Solution(object):
         :type head: Optional[ListNode]
         :rtype: Optional[ListNode]
         """
-        n = self.get_len(head)
+        # get len
+        n = 0
+        s = head
+        while s is not None:
+            s = s.next
+            n += 1
+        
         if n <= 1:
             return None
-        mid = n / 2
+        
+        # remove mid
         s = head
-        for i in range(1, mid):
+        for i in range(1, n / 2):
             s = s.next
         m = s.next
         e = m.next
         m.next = None
         s.next = e
         return head
-        
-    def get_len(self, head):
-        n = 0
-        while head is not None:
-            head = head.next
-            n += 1
-        return n
