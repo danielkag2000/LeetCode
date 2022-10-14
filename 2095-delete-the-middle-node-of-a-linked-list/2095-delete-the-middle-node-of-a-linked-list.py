@@ -8,23 +8,28 @@ class Solution(object):
         """
         :type head: Optional[ListNode]
         :rtype: Optional[ListNode]
-        """
-        # get len
-        n = 0
-        s = head
-        while s is not None:
-            s = s.next
-            n += 1
-        
+        """       
+        n = self.get_len(head)
         if n <= 1:
             return None
         
-        # remove mid
-        s = head
-        for i in range(1, n / 2):
-            s = s.next
+        s = self.get_mid(head, n)
         m = s.next
         e = m.next
         m.next = None
         s.next = e
         return head
+        
+        
+    def get_mid(self, head, n):
+        for i in range(1, n/2):
+            print head.val
+            head = head.next
+        return head
+        
+    def get_len(self, head):
+        n = 0
+        while head is not None:
+            head = head.next
+            n += 1
+        return n
