@@ -8,23 +8,18 @@ class Solution(object):
         """
         :type head: Optional[ListNode]
         :rtype: Optional[ListNode]
-        """       
+        """
         n = self.get_len(head)
         if n <= 1:
             return None
-        
-        s = self.get_mid(head, n)
+        mid = n / 2
+        s = head
+        for i in range(1, mid):
+            s = s.next
         m = s.next
         e = m.next
         m.next = None
         s.next = e
-        return head
-        
-        
-    def get_mid(self, head, n):
-        for i in range(1, n/2):
-            print head.val
-            head = head.next
         return head
         
     def get_len(self, head):
